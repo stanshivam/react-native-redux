@@ -1,0 +1,14 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var appStyle = exports.appStyle = {
+  resultText: {
+    backgroundColor: '#000',
+    color: '#FFF',
+    height: 20
+  },
+  resultImage: {
+    height: 150
+  }
+
+};

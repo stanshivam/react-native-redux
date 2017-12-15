@@ -1,0 +1,144 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/zasya/GrowerNative/app/components/main.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactRedux = require('react-redux');
+
+var _actions = require('../actions');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var styles = void 0;
+
+var Main = function Main(props) {
+  var _styles = styles,
+      container = _styles.container,
+      text = _styles.text,
+      button = _styles.button,
+      buttonText = _styles.buttonText;
+  var _props$people = props.people,
+      people = _props$people.people,
+      isFetching = _props$people.isFetching;
+
+  return _react2.default.createElement(
+    _reactNative.View,
+    { style: container, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19
+      }
+    },
+    _react2.default.createElement(
+      _reactNative.Text,
+      { style: text, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      },
+      'Redux Example'
+    ),
+    _react2.default.createElement(
+      _reactNative.TouchableHighlight,
+      { style: button, onPress: function onPress() {
+          return props.getPeople();
+        }, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      },
+      _react2.default.createElement(
+        _reactNative.Text,
+        { style: buttonText, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 22
+          }
+        },
+        'Load People'
+      )
+    ),
+    isFetching && _react2.default.createElement(
+      _reactNative.Text,
+      {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25
+        }
+      },
+      'Loading'
+    ),
+    people.length ? people.map(function (person, i) {
+      return _react2.default.createElement(
+        _reactNative.View,
+        { key: i, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 30
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 31
+            }
+          },
+          'Name: ',
+          person.name
+        ),
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 32
+            }
+          },
+          'Birth Year: ',
+          person.birth_year
+        )
+      );
+    }) : null
+  );
+};
+
+styles = _reactNative.StyleSheet.create({
+  container: {
+    marginTop: 100,
+    paddingLeft: 20,
+    paddingRight: 20
+  },
+  text: {
+    textAlign: 'center'
+  },
+  button: {
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#0b7eff'
+  },
+  buttonText: {
+    color: 'white'
+  }
+});
+
+function mapStateToProps(state) {
+  return {
+    people: state.people
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getPeople: function getPeople() {
+      return dispatch((0, _actions.fetchPeopleFromAPI)());
+    }
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Main);

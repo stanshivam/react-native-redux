@@ -1,0 +1,42 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchPeopleFromAPI = fetchPeopleFromAPI;
+exports.getPeople = getPeople;
+exports.getPeopleSuccess = getPeopleSuccess;
+exports.getPeopleFailure = getPeopleFailure;
+
+var _constants = require('./constants');
+
+function fetchPeopleFromAPI() {
+  return function (dispatch) {
+    dispatch(getPeople());
+    fetch('https://swapi.co/api/people/').then(function (data) {
+      return data.json();
+    }).then(function (json) {
+      console.log('json:', json);
+      dispatch(getPeopleSuccess(json.results));
+    }).catch(function (err) {
+      return dispatch(getPeopleFailure(err));
+    });
+  };
+}
+
+function getPeople() {
+  return {
+    type: _constants.FETCHING_PEOPLE
+  };
+}
+
+function getPeopleSuccess(data) {
+  return {
+    type: _constants.FETCHING_PEOPLE_SUCCESS,
+    data: data
+  };
+}
+
+function getPeopleFailure() {
+  return {
+    type: _constants.FETCHING_PEOPLE_FAILURE
+  };
+}

@@ -1,0 +1,151 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./../../../node_modules/react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _jsxFileName = '/home/zasya/GrowerNative/app/containers/ApplicationTabs/index.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactNative = require('react-native');
+
+var _redux = require('redux');
+
+var _reactRedux = require('react-redux');
+
+var _actions = require('../../actions');
+
+var _Home = require('../Home');
+
+var _Home2 = _interopRequireDefault(_Home);
+
+var _About = require('../About');
+
+var _About2 = _interopRequireDefault(_About);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  ApplicationTabs: {
+    displayName: 'ApplicationTabs'
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: '/home/zasya/GrowerNative/app/containers/ApplicationTabs/index.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var ApplicationTabs = _wrapComponent('ApplicationTabs')(function (_Component) {
+  _inherits(ApplicationTabs, _Component);
+
+  function ApplicationTabs(props) {
+    _classCallCheck(this, ApplicationTabs);
+
+    var _this = _possibleConstructorReturn(this, (ApplicationTabs.__proto__ || Object.getPrototypeOf(ApplicationTabs)).call(this, props));
+
+    _this.state = { index: 0 };
+    return _this;
+  }
+
+  _createClass(ApplicationTabs, [{
+    key: 'onPress',
+    value: function onPress(index) {
+      this.props.setTab(index);
+    }
+  }, {
+    key: 'renderScene',
+    value: function renderScene(component) {
+      return _react3.default.createElement(
+        _reactNative.View,
+        { style: { flex: 1 }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 22
+          }
+        },
+        _react3.default.createElement(component, this.props)
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react3.default.createElement(
+        _reactNative.TabBarIOS,
+        { style: { flex: 1 }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 30
+          }
+        },
+        _react3.default.createElement(
+          _reactNative.TabBarIOS.Item,
+          {
+            systemIcon: 'favorites',
+            iconSize: 25,
+            onPress: function onPress() {
+              return _this2.onPress(0);
+            },
+            selectedIconName: 'favorites',
+            selected: this.props.tabs.index === 0, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 31
+            }
+          },
+          this.renderScene(_Home2.default)
+        ),
+        _react3.default.createElement(
+          _reactNative.TabBarIOS.Item,
+          {
+            systemIcon: 'more',
+            iconSize: 25,
+            onPress: function onPress() {
+              return _this2.onPress(1);
+            },
+            selectedIconName: 'more',
+            selected: this.props.tabs.index === 1, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 39
+            }
+          },
+          this.renderScene(_About2.default)
+        )
+      );
+    }
+  }]);
+
+  return ApplicationTabs;
+}(_react2.Component));
+
+function mapStateToProps(state) {
+  return {
+    tabs: state.tabs
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)(_actions.ActionCreators, dispatch);
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ApplicationTabs);

@@ -1,0 +1,9 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var SET_SEARCHED_RECIPES = exports.SET_SEARCHED_RECIPES = 'SET_SEARCHED_RECIPES';
+
+var SET_TAB = exports.SET_TAB = 'SET_TAB';
+
+var NAVIGATION_FORWARD = exports.NAVIGATION_FORWARD = 'NAVIGATION_FORWARD';
+var NAVIGATION_BACK = exports.NAVIGATION_BACK = 'NAVIGATION_BACK';

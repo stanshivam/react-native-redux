@@ -1,0 +1,58 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.navigationParams = exports.navigationState = exports.tabs = undefined;
+
+var _createReducer2;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _reactNative = require('react-native');
+
+var _reactNative2 = _interopRequireDefault(_reactNative);
+
+var _types = require('../actions/types');
+
+var types = _interopRequireWildcard(_types);
+
+var _ApplicationTabs = require('../containers/ApplicationTabs');
+
+var _ApplicationTabs2 = _interopRequireDefault(_ApplicationTabs);
+
+var _Detail = require('../containers/Detail');
+
+var _Detail2 = _interopRequireDefault(_Detail);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var NavigationExperimental = _reactNative2.default.NavigationExperimental,
+    StatusBar = _reactNative2.default.StatusBar;
+var NavigationCardStack = NavigationExperimental.CardStack,
+    NavigationStateUtils = NavigationExperimental.StateUtils;
+
+
+var allTabs = [function (lastRoute) {
+  return lastRoute || _extends({ key: 'home', index: 0 });
+}, function (lastRoute) {
+  return lastRoute || _extends({ key: 'about', index: 1 });
+}];
+
+var tabs = exports.tabs = createReducer({ index: 0, key: 'home', routes: allTabs }, _defineProperty({}, types.SET_TAB, function (state, action) {
+  return _extends({}, state, allTabs[action.index]());
+}));
+
+var navigationState = exports.navigationState = createReducer({ index: 0,
+  routes: [{ key: 'ApplicationTabs' }, { key: 'Detail' }]
+}, (_createReducer2 = {}, _defineProperty(_createReducer2, types.NAVIGATION_FORWARD, function (state, action) {
+  return NavigationStateUtils.forward(state);
+}), _defineProperty(_createReducer2, types.NAVIGATION_BACK, function (state, action) {
+  return NavigationStateUtils.back(state);
+}), _createReducer2));
+
+var navigationParams = exports.navigationParams = createReducer({}, _defineProperty({}, types.NAVIGATION_FORWARD, function (state, action) {
+  return action.state;
+}));

@@ -1,0 +1,20 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var login = exports.login = function login(username, password) {
+    return {
+        type: 'LOGIN',
+        username: username,
+        password: password
+    };
+};
+
+var logout = exports.logout = function logout() {
+    return {
+        type: 'LOGOUT'
+    };
+};
+
+var signup = exports.signup = function signup(username, password) {
+    return function (dispatch) {};
+};
