@@ -24,6 +24,10 @@ var _secured = require('./secured');
 
 var _secured2 = _interopRequireDefault(_secured);
 
+var _main = require('./main');
+
+var _main2 = _interopRequireDefault(_main);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65,17 +69,17 @@ var Application = _wrapComponent('Application')(function (_Component) {
         value: function render() {
             console.log(this.props.isLoggedIn);
             if (this.props.isLoggedIn) {
-                return _react3.default.createElement(_secured2.default, {
+                return _react3.default.createElement(_main2.default, {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 10
+                        lineNumber: 11
                     }
                 });
             } else {
                 return _react3.default.createElement(_login2.default, {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 12
+                        lineNumber: 13
                     }
                 });
             }
