@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Login from './login';
 import Secured from './secured';
+import Start from './start';
 import Main from './main';
  
 class Application extends Component {
@@ -12,7 +13,7 @@ class Application extends Component {
         // } else {
         //     return <Login />;
         // }
-        return <Secured />;
+        return <Start />;
     }
 }
  
