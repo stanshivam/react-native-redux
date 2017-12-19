@@ -38,6 +38,20 @@ const Main = (props) => {
   )
 }
 
+
+
+function mapStateToProps (state) {
+  return {
+    people: state.people
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    getPeople: () => dispatch(fetchPeopleFromAPI())
+  }
+}
+
 styles = StyleSheet.create({
   container: {
     marginTop: 100,
@@ -57,18 +71,6 @@ styles = StyleSheet.create({
     color: 'white'
   }
 })
-
-function mapStateToProps (state) {
-  return {
-    people: state.people
-  }
-}
-
-function mapDispatchToProps (dispatch) {
-  return {
-    getPeople: () => dispatch(fetchPeopleFromAPI())
-  }
-}
 
 export default connect(
   mapStateToProps,
