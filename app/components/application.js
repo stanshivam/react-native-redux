@@ -7,19 +7,19 @@ import Main from './main';
  
 class Application extends Component {
     render() {
-        // console.log(this.props.isLoggedIn)
-        // if (this.props.isLoggedIn) {
-        //     return <Main />;
-        // } else {
-        //     return <Login />;
-        // }
-        return <Start />;
+        console.log(this.props.hasConfig)
+        if (this.props.hasConfig) {
+            return <Main />;
+        } else {
+            return <Start />;
+        }
+        // return <Start />;
     }
 }
  
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLoggedIn: state.auth.isLoggedIn
+        hasConfig: state.start.hasConfig
     };
 }
  
