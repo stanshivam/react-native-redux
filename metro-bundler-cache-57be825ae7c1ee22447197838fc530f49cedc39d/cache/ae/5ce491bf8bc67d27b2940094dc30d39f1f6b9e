@@ -14,7 +14,6 @@ function fetchPeopleFromAPI() {
     fetch('https://swapi.co/api/people/').then(function (data) {
       return data.json();
     }).then(function (json) {
-      console.log('json:', json);
       dispatch(getPeopleSuccess(json.results));
     }).catch(function (err) {
       return dispatch(getPeopleFailure(err));

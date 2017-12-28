@@ -7,6 +7,7 @@ export const login = (username, password) => {
 };
  
 export const logout = () => {
+    console.log('here in logout action');
     return {
         type: 'LOGOUT'
     };

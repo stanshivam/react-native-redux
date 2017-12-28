@@ -5,7 +5,6 @@ const defaultState = {
 };
  
 export default function reducer(state = defaultState, action) {
-    console.log('in auth reducer');
     switch (action.type) {
         case 'LOGIN': 
             return Object.assign({}, state, { 

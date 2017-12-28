@@ -1,0 +1,12 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var doSubmit = exports.doSubmit = function doSubmit(name, phone) {
+    console.log(name);
+
+    return {
+        type: 'DOSUBMIT',
+        name: name,
+        phone: phone
+    };
+};

@@ -107,6 +107,20 @@ var Main = function Main(props) {
   );
 };
 
+function mapStateToProps(state) {
+  return {
+    people: state.people
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getPeople: function getPeople() {
+      return dispatch((0, _actions.fetchPeopleFromAPI)());
+    }
+  };
+}
+
 styles = _reactNative.StyleSheet.create({
   container: {
     marginTop: 100,
@@ -126,19 +140,5 @@ styles = _reactNative.StyleSheet.create({
     color: 'white'
   }
 });
-
-function mapStateToProps(state) {
-  return {
-    people: state.people
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    getPeople: function getPeople() {
-      return dispatch((0, _actions.fetchPeopleFromAPI)());
-    }
-  };
-}
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Main);

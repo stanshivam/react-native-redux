@@ -24,6 +24,10 @@ var _secured = require('./secured');
 
 var _secured2 = _interopRequireDefault(_secured);
 
+var _start = require('./start');
+
+var _start2 = _interopRequireDefault(_start);
+
 var _main = require('./main');
 
 var _main2 = _interopRequireDefault(_main);
@@ -67,19 +71,19 @@ var Application = _wrapComponent('Application')(function (_Component) {
     _createClass(Application, [{
         key: 'render',
         value: function render() {
-            console.log(this.props.isLoggedIn);
-            if (this.props.isLoggedIn) {
+            console.log(this.props.hasConfig);
+            if (this.props.hasConfig) {
                 return _react3.default.createElement(_main2.default, {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 11
+                        lineNumber: 12
                     }
                 });
             } else {
-                return _react3.default.createElement(_login2.default, {
+                return _react3.default.createElement(_start2.default, {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 13
+                        lineNumber: 14
                     }
                 });
             }
@@ -91,7 +95,7 @@ var Application = _wrapComponent('Application')(function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
     return {
-        isLoggedIn: state.auth.isLoggedIn
+        hasConfig: state.start.hasConfig
     };
 };
 

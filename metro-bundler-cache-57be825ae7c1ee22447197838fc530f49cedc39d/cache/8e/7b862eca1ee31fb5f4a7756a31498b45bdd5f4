@@ -10,6 +10,7 @@ var login = exports.login = function login(username, password) {
 };
 
 var logout = exports.logout = function logout() {
+    console.log('here in logout action');
     return {
         type: 'LOGOUT'
     };

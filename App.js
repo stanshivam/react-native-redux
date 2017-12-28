@@ -5,20 +5,28 @@ import {Provider} from 'react-redux';
 import configureStore from './app/configureStore';
 import Main from './app/components/main';
 import Application from './app/components/application';
+import { Font } from 'expo';
 
 const store = configureStore();
 
-const rnredux = () => {
-  <Provider store={store}>
-    <Main />
-  </Provider>
-}
 
 export default class App extends React.Component {
+
+  state = {
+    fontLoaded: false
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Arial': require('./app/assets/fonts/Arial.ttf'),
+      'Roboto': require('native-base/Fonts/Roboto.ttf'),
+      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
   render() {
-    console.log(this.props.isLoggedIn)
+    // console.log(this.props.isLoggedIn)
+    if (!this.state.fontLoaded) return null;
     return (
-      
       <Provider store={store}>
         <Application />
       </Provider>

@@ -1,0 +1,315 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./../../node_modules/react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _jsxFileName = '/home/zasya/GrowerNative/app/components/start.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactRedux = require('react-redux');
+
+var _startActions = require('../actions/start-actions');
+
+var _reactNative = require('react-native');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+    Start: {
+        displayName: 'Start'
+    }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: '/home/zasya/GrowerNative/app/components/start.js',
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+    return function (Component) {
+        return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+}
+
+var Start = _wrapComponent('Start')(function (_Component) {
+    _inherits(Start, _Component);
+
+    function Start(props) {
+        _classCallCheck(this, Start);
+
+        var _this = _possibleConstructorReturn(this, (Start.__proto__ || Object.getPrototypeOf(Start)).call(this, props));
+
+        _this.state = {
+            name: '',
+            phone: ''
+        };
+        return _this;
+    }
+
+    _createClass(Start, [{
+        key: 'submit',
+        value: function submit(e) {
+            this.props.onSubmit(this.state.name, this.state.phone);
+            e.preventDefault();
+        }
+    }, {
+        key: 'renderGridItem',
+        value: function renderGridItem(item) {
+
+            return _react3.default.createElement(
+                _reactNative.TouchableOpacity,
+                { style: styles.gridItem, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 33
+                    }
+                },
+                _react3.default.createElement(
+                    _reactNative.View,
+                    { style: styles.gridItemImage, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 34
+                        }
+                    },
+                    _react3.default.createElement(
+                        _reactNative.Text,
+                        { style: { fontSize: 25, color: 'white' }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 35
+                            }
+                        },
+                        'NAME'
+                    )
+                ),
+                _react3.default.createElement(
+                    _reactNative.Text,
+                    { style: styles.gridItemText, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 39
+                        }
+                    },
+                    'my name'
+                )
+            );
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var crops = [];
+
+            for (var i = 0; i < 10; i++) {
+
+                crops.push(_react3.default.createElement(
+                    _reactNative.View,
+                    { key: i, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 50
+                        }
+                    },
+                    _react3.default.createElement(
+                        _reactNative.TouchableOpacity,
+                        { style: styles.gridItem, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 51
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            { style: styles.gridItemImage, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 52
+                                }
+                            },
+                            _react3.default.createElement(
+                                _reactNative.Text,
+                                { style: { fontSize: 25, color: 'white' }, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 53
+                                    }
+                                },
+                                'NAME'
+                            )
+                        ),
+                        _react3.default.createElement(
+                            _reactNative.Text,
+                            { style: styles.gridItemText, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 57
+                                }
+                            },
+                            'my name'
+                        )
+                    )
+                ));
+            }
+            return _react3.default.createElement(
+                _reactNative.ScrollView,
+                { style: { padding: 20 }, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 63
+                    }
+                },
+                _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 64
+                        }
+                    },
+                    _react3.default.createElement(
+                        _reactNative.Text,
+                        { style: { fontSize: 27 }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 65
+                            }
+                        },
+                        'Grower Munchh'
+                    ),
+                    _react3.default.createElement(_reactNative.TextInput, {
+                        placeholder: 'Name',
+                        autoCapitalize: 'none',
+                        autoCorrect: false,
+                        autoFocus: true,
+                        keyboardType: 'email-address',
+                        value: this.state.name,
+                        onChangeText: function onChangeText(text) {
+                            return _this2.setState({ name: text });
+                        }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 68
+                        }
+                    }),
+                    _react3.default.createElement(_reactNative.TextInput, {
+                        placeholder: 'Phone',
+                        autoCapitalize: 'none',
+                        autoCorrect: false,
+                        secureTextEntry: true,
+                        value: this.state.phone,
+                        onChangeText: function onChangeText(text) {
+                            return _this2.setState({ phone: text });
+                        }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 76
+                        }
+                    }),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        { style: styles.cropContainer, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 84
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            { style: styles.crops, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 85
+                                }
+                            },
+                            _react3.default.createElement(
+                                _reactNative.Text,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 86
+                                    }
+                                },
+                                'Select your interests'
+                            )
+                        )
+                    ),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        { style: { flex: 1, flexDirection: 'row', flexWrap: 'wrap' }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 89
+                            }
+                        },
+                        _react3.default.createElement(_reactNative.View, { style: { flex: 3, height: 50, backgroundColor: 'powderblue' }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 90
+                            }
+                        }),
+                        crops
+                    ),
+                    _react3.default.createElement(_reactNative.Button, { onPress: function onPress(e) {
+                            return _this2.submit(e);
+                        }, title: 'Submit', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 104
+                        }
+                    })
+                )
+            );
+        }
+    }]);
+
+    return Start;
+}(_react2.Component));
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+    return {
+        hasConfig: state.start.hasConfig
+    };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onSubmit: function onSubmit(name, phone) {
+            dispatch((0, _startActions.doSubmit)(name, phone));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Start);
+
+var styles = _reactNative.StyleSheet.create({
+    cropContainer: {
+        flex: 1,
+        flexDirection: "column"
+    },
+    crops: {
+        flexDirection: "column"
+    },
+    grid: {
+        justifyContent: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        flex: 1
+    },
+    gridItem: {
+        margin: 5,
+        width: 150,
+        height: 150,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    gridItemImage: {
+        width: 100,
+        height: 100,
+        borderWidth: 1.5,
+        borderColor: 'black'
+    },
+    gridItemText: {
+        marginTop: 5,
+        textAlign: 'center'
+    }
+});

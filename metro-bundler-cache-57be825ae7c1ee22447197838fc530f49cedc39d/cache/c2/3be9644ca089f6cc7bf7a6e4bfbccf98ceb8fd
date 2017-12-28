@@ -12,11 +12,16 @@ var _auth = require('./auth');
 
 var _auth2 = _interopRequireDefault(_auth);
 
+var _startReducer = require('./start-reducer');
+
+var _startReducer2 = _interopRequireDefault(_startReducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
     people: _people2.default,
-    auth: _auth2.default
+    auth: _auth2.default,
+    start: _startReducer2.default
 });
 
 exports.default = rootReducer;

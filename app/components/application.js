@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Login from './login';
-import Secured from './secured';
-import Main from './main';
+import ReduxNavigation from '../navigation/ReduxNavigation'
  
 class Application extends Component {
     render() {
-        console.log(this.props.isLoggedIn)
-        if (this.props.isLoggedIn) {
-            return <Main />;
-        } else {
-            return <Login />;
-        }
-        
+        return <ReduxNavigation />        
     }
 }
  
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLoggedIn: state.auth.isLoggedIn
+        hasConfig: state.start.hasConfig
     };
 }
  
