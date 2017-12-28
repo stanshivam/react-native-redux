@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Login from './login';
-import Secured from './secured';
-import Start from './start';
-import Main from './main';
+import ReduxNavigation from '../navigation/ReduxNavigation'
  
 class Application extends Component {
     render() {
-        console.log(this.props.hasConfig)
-        if (this.props.hasConfig) {
-            return <Main />;
-        } else {
-            return <Start />;
-        }
-        // return <Start />;
+        return <ReduxNavigation />        
     }
 }
  
