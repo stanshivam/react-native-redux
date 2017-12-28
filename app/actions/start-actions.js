@@ -8,3 +8,11 @@ export const doSubmit = (name, phone) => {
         phone: phone
     };
 };
+
+export const selectCrop = (crop) => {
+
+    return {
+        type: 'SELECTCROP',
+        crop: crop
+    };
+};

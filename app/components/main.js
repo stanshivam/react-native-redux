@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableHighlight, View, Text, StyleSheet } from 'react-native'
+import { TouchableHighlight, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { connect } from 'react-redux'
 import { fetchPeopleFromAPI } from '../actions'
@@ -14,7 +14,7 @@ const Main = (props) => {
     buttonText
   } = styles
   const { people, isFetching } = props.people;
-//   console.log(people)
+  // console.log(people)
   return (
     <View style={container}>
       <Text style={text}>Redux Example</Text>
@@ -27,10 +27,12 @@ const Main = (props) => {
       {
         people.length ? (
           people.map((person, i) => {
-            return <View key={i} >
+            return <TouchableOpacity key={i} onPress={() => props.getPeople(person)}>
+            <View  >
               <Text>Name: {person.name}</Text>
+              <Text>Mass: {person.mass}</Text>
               <Text>Birth Year: {person.birth_year}</Text>
-            </View>
+            </View></TouchableOpacity>
           })
         ) : null
       }
@@ -48,7 +50,10 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    getPeople: () => dispatch(fetchPeopleFromAPI())
+    getPeople: (person) => {
+      console.log(person)
+      dispatch(fetchPeopleFromAPI())
+    }
   }
 }
 

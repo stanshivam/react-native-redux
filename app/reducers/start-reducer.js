@@ -1,7 +1,9 @@
 const defaultState = {
     hasConfig: false,
     name: '',
-    phone: ''
+    phone: '',
+    email: '',
+    selectedCrops: []
 };
  
 export default function startReducer(state = defaultState, action) {
@@ -12,6 +14,11 @@ export default function startReducer(state = defaultState, action) {
                 hasConfig: true,
                 name: action.name,
                 phone: action.phone
+            });
+        case 'SELECTCROP': 
+            return Object.assign({}, state, { 
+                hasConfig: true,
+                selectedCrops: [...selectedCrops, action.crop]
             });
         
         default:

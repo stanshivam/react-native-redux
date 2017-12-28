@@ -19,7 +19,7 @@ import {
 
 import { 
     Container, Header, Content, Form, Item, Input, 
-    Label, 
+    Label, Card, CardItem, Thumbnail,
     Body,
     Title , Left, Right, Icon, Footer, FooterTab } from 'native-base';
 
@@ -29,6 +29,7 @@ class Start extends Component {
         this.state = {
             name: '',
             phone: '',
+            email: '',
             crops: []
         };
     }
@@ -41,19 +42,23 @@ class Start extends Component {
 
     render() {
         var crops = [];
-        for(let i = 0; i < 20; i++){
+        for(let i = 0; i < 2; i++){
             crops.push(
             <View key = {i}>
                 <TouchableOpacity style={styles.gridItem} >
                         <View style={styles.gridItemImage}>  
-                        <Image
-                            style={{flex:1}}
-                            source={require('../assets/images/crop.jpg')}
-                            resizeMode="contain"
-                        />              
-                        <Text style={{fontSize:15, color:'darkkhaki'}}>
-                                NAME
-                        </Text>
+                        <Card>
+                            <CardItem>
+                            <Left>
+                                <Body>
+                                    <Text note>GeekyAnts</Text>
+                                </Body>
+                            </Left>
+                            </CardItem>
+                            <CardItem cardBody>
+                                    <Image source={require('../assets/images/crop.jpg')} style={{height: 200, width: null, flex: 1}}/>
+                            </CardItem>
+                        </Card>
                         </View>
                 </TouchableOpacity>
             </View>
@@ -63,15 +68,14 @@ class Start extends Component {
             <Container style={styles.headerPad}>
                 <Header>
                     <Body>
-                        <Title>Grower Munch</Title>
+                        <Title>Welcome to Grower Munch ;p</Title>
                     </Body>
                 </Header>
                 <Content>
                     <Form>
-                        <Item floatingLabel>
-                        <Label>Username</Label>
+                        <Item floatingLabel first>
+                        <Label>Name</Label>
                         <TextInput 
-                            placeholder='Name' 
                             autoCapitalize='none' 
                             autoCorrect={false} 
                             autoFocus={true} 
@@ -79,10 +83,19 @@ class Start extends Component {
                             value={this.state.name} 
                             onChangeText={(text) => this.setState({ name: text })} />
                         </Item>
-                        <Item floatingLabel last>
-                        <Label>Password</Label>
+                        <Item floatingLabel>
+                        <Label>Email</Label>
                         <TextInput 
-                            placeholder='Phone' 
+                            autoCapitalize='none' 
+                            autoCorrect={false} 
+                            autoFocus={true} 
+                            keyboardType='email-address' 
+                            value={this.state.email} 
+                            onChangeText={(text) => this.setState({ email: text })} />
+                        </Item>
+                        <Item floatingLabel last>
+                        <Label>Phone</Label>
+                        <TextInput 
                             autoCapitalize='none' 
                             autoCorrect={false} 
                             secureTextEntry={true} 
@@ -95,11 +108,12 @@ class Start extends Component {
                     onPress={() => this.props.navigation.navigate('drawerStack')} >
                     Pretend we logged in
                     </Text> */}
+                    
                     <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                         {crops}
                     </View>
                     <View style={styles.button}>
-                        <Button  primary onPress={(e) => this.submit(e)} title="Submit"/>
+                        <Button  primary onPress={(e) => this.submit(e)} title="Done"/>
                     </View>
                 </Content>
                 {/* <ListView 
@@ -149,22 +163,17 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     gridItem: {
-        margin:5,
-        width: 150,
-        height: 150,
+        margin:2,
         justifyContent: 'center',
         alignItems: 'center',
     },
     gridItemImage: {
-        width: 150,
+        width: 174,
         height: 150,
     },
-    gridItemText: {
-        marginTop: 5,
-        textAlign:'center',
-    },
+    
     button: {
-        padding: 15,
+        padding: 10,
 
     }
 })

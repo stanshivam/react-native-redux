@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReduxNavigation from '../navigation/ReduxNavigation'
+import Main from '../components/main'
  
 class Application extends Component {
     render() {
-        return <ReduxNavigation />        
+        return <Main />        
     }
 }
  
