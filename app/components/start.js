@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { doSubmit } from '../actions/start-actions';
+import { fetchCropFromAPI } from '../actions/start-actions';
 
 // var login = require("../reducers/auth");
 import { 
@@ -23,15 +24,32 @@ import {
     Body,
     Title , Left, Right, Icon, Footer, FooterTab } from 'native-base';
 
+
 class Start extends Component {
     constructor (props) {
         super(props);
         this.state = {
             name: '',
             phone: '',
-            email: '',
-            crops: []
+            email: ''
         };
+        const { crops, isFetching } = props.crops;
+    }
+
+    componentWillMount() {
+        this.getCrops();
+        console.log('in componentWillMount');
+        
+    }
+
+    componentDidMount() {
+        console.log('in componentDidMount');
+    }
+
+   
+    getCrops () {
+        console.log('in get crops')
+        this.props.getCropss();
     }
 
     submit (e) {
@@ -40,12 +58,13 @@ class Start extends Component {
         e.preventDefault();
     }
 
+
     render() {
-        var crops = [];
+        var myCrops = [];
         for(let i = 0; i < 2; i++){
-            crops.push(
+            myCrops.push(
             <View key = {i}>
-                <TouchableOpacity style={styles.gridItem} >
+                <TouchableOpacity  >
                         <View style={styles.gridItemImage}>  
                         <Card>
                             <CardItem>
@@ -66,6 +85,7 @@ class Start extends Component {
         }
         return (
             <Container style={styles.headerPad}>
+            
                 <Header>
                     <Body>
                         <Title>Welcome to Grower Munch ;p</Title>
@@ -110,16 +130,34 @@ class Start extends Component {
                     </Text> */}
                     
                     <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-                        {crops}
+                        {myCrops}
                     </View>
                     <View style={styles.button}>
+                        <Text>{this.props.crops.length}</Text>
+                        <Text>{this.props.isFetching}</Text>
                         <Button  primary onPress={(e) => this.submit(e)} title="Done"/>
                     </View>
+                    {
+                        this.props.isFetching && <Text>Loading</Text>
+                    }
+                    {
+                        this.props.crops.length ? (
+                            this.props.crops.map((crop, i) => {
+                            return <TouchableOpacity key={i}>
+                                <View  >
+                                <Text>Name: {crop.name}</Text>
+                                <Text>Mass: {crop.mass}</Text>
+                                <Text>Birth Year: {crop.birth_year}</Text>
+                                </View></TouchableOpacity>
+                        })
+                        ) : null
+                    }
                 </Content>
                 {/* <ListView 
                     contentContainerStyle={styles.grid}
                     renderRow={() => this.renderGridItem()}
                 /> */}
+                
             </Container>
         );
         
@@ -129,17 +167,22 @@ class Start extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        hasConfig: state.start.hasConfig
+        hasConfig: state.start.hasConfig,
+        crops: state.start.crops,
+        isFetching: state.start.isFetching
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSubmit: (name, phone) => { dispatch(doSubmit(name, phone)); }
+        onSubmit: (name, phone) => { dispatch(doSubmit(name, phone)) },
+        getCropss: () => { dispatch(fetchCropFromAPI()) }
     }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Start);
+
+
 const styles = StyleSheet.create({
     headerPad: {
         ...Platform.select({
@@ -149,29 +192,11 @@ const styles = StyleSheet.create({
         })
 
     },
-    cropContainer: {
-        flex: 1,
-        flexDirection: "column"
-    },
-    crops: {
-        flexDirection: "column"
-    },
-    grid: {
-        justifyContent: 'center',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        flex: 1,
-    },
-    gridItem: {
-        margin:2,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+    
     gridItemImage: {
         width: 174,
         height: 150,
     },
-    
     button: {
         padding: 10,
 

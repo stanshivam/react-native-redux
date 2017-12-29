@@ -5,7 +5,8 @@ import Main from '../components/main'
  
 class Application extends Component {
     render() {
-        return <Main />        
+        // return <Main /> 
+        return <ReduxNavigation />       
     }
 }
  
