@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+//actions
 import { doSubmit } from '../actions/start-actions';
 import { fetchCropFromAPI } from '../actions/start-actions';
 
 // var login = require("../reducers/auth");
 import { 
-    ScrollView, 
-    Text, 
-    TextInput, 
-    View, 
-    Button, 
-    ListView,
-    StyleSheet, 
-    Image,
-    TouchableOpacity,
-    Platform,
+    ScrollView, Text, TextInput, View, Button, ListView,
+    StyleSheet, Image, TouchableOpacity, Platform,
     StatusBar } from 'react-native';
 
 import { 
     Container, Header, Content, Form, Item, Input, 
-    Label, Card, CardItem, Thumbnail,
-    Body,
-    Title , Left, Right, Icon, Footer, FooterTab } from 'native-base';
+    Label, Card, CardItem, Thumbnail, Body,Title , 
+    Left, Right, Icon, Footer, FooterTab } from 'native-base';
 
 
 class Start extends Component {
@@ -48,7 +39,6 @@ class Start extends Component {
 
    
     getCrops () {
-        console.log('in get crops')
         this.props.getCropss();
     }
 
@@ -61,32 +51,37 @@ class Start extends Component {
 
     render() {
         var myCrops = [];
-        for(let i = 0; i < 2; i++){
-            myCrops.push(
-            <View key = {i}>
-                <TouchableOpacity  >
-                        <View style={styles.gridItemImage}>  
-                        <Card>
-                            <CardItem>
-                            <Left>
-                                <Body>
-                                    <Text note>GeekyAnts</Text>
-                                </Body>
-                            </Left>
-                            </CardItem>
-                            <CardItem cardBody>
-                                    <Image source={require('../assets/images/crop.jpg')} style={{height: 200, width: null, flex: 1}}/>
-                            </CardItem>
-                        </Card>
-                        </View>
-                </TouchableOpacity>
-            </View>
-            )
-        }
+        
+        this.props.crops.length ? (
+            this.props.crops.map((crop, i) => {
+                myCrops.push(
+                    <View key = {i}>
+                        <TouchableOpacity  >
+                                <View style={styles.gridItemImage}>  
+                                <Card>
+                                    <CardItem>
+                                    <Left>
+                                        <Body>
+                                            <Text note>{crop.name}</Text>
+                                        </Body>
+                                    </Left>
+                                    </CardItem>
+                                    <CardItem cardBody>
+                                            <Image source={require('../assets/images/crop.jpg')} style={{height: 200, width: null, flex: 1}}/>
+                                    </CardItem>
+                                </Card>
+                                </View>
+                        </TouchableOpacity>
+                    </View>
+                )
+        })
+        ) : null
+
+
         return (
             <Container style={styles.headerPad}>
             
-                <Header>
+                <Header >
                     <Body>
                         <Title>Welcome to Grower Munch ;p</Title>
                     </Body>
@@ -124,34 +119,21 @@ class Start extends Component {
                         </Item>
                     </Form>
                     
-                    {/* <Text
-                    onPress={() => this.props.navigation.navigate('drawerStack')} >
+                    <Text
+                    onPress={() => this.props.navigation.navigate('selectCrops')} >
                     Pretend we logged in
-                    </Text> */}
-                    
+                    </Text>
+                    {
+                        this.props.isFetching && <Text>Loading</Text>
+                    }
                     <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                         {myCrops}
                     </View>
                     <View style={styles.button}>
-                        <Text>{this.props.crops.length}</Text>
-                        <Text>{this.props.isFetching}</Text>
                         <Button  primary onPress={(e) => this.submit(e)} title="Done"/>
                     </View>
-                    {
-                        this.props.isFetching && <Text>Loading</Text>
-                    }
-                    {
-                        this.props.crops.length ? (
-                            this.props.crops.map((crop, i) => {
-                            return <TouchableOpacity key={i}>
-                                <View  >
-                                <Text>Name: {crop.name}</Text>
-                                <Text>Mass: {crop.mass}</Text>
-                                <Text>Birth Year: {crop.birth_year}</Text>
-                                </View></TouchableOpacity>
-                        })
-                        ) : null
-                    }
+                    
+                    
                 </Content>
                 {/* <ListView 
                     contentContainerStyle={styles.grid}
@@ -200,5 +182,6 @@ const styles = StyleSheet.create({
     button: {
         padding: 10,
 
-    }
+    },
+    
 })

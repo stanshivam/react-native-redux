@@ -8,6 +8,8 @@ import ForgottenPasswordScreen from '../components/ForgottenPasswordScreen'
 import Screen1 from '../components/screen1'
 import Screen2 from '../components/screen2'
 import Start from '../components/start'
+import SelectCrops from '../components/selectCrops'
+import Constants from 'expo'
 
 
 // drawer stack
@@ -38,16 +40,18 @@ const LoginStack = StackNavigator({
   }
 }, {
   headerMode: 'none',
-  // navigationOptions: {
-  //   headerStyle: {backgroundColor: 'red'},
-  //   title: 'You are not logged in'
-  // } 
+  navigationOptions: {
+    headerStyle: { marginTop: Constants.statusBarHeight, backgroundColor: 'red' },
+    title: 'You are not logged in'
+  } 
+  
 })
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
   loginStack: { screen: LoginStack },
-  drawerStack: { screen: DrawerNavigation }
+  drawerStack: { screen: DrawerNavigation },
+  selectCrops: {screen: SelectCrops}
 }, {
   // Default config for all screens
   headerMode: 'none',
